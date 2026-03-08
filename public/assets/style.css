@@ -1,0 +1,325 @@
+/* ==========================================================================
+   1. CONFIGURACIÓN GLOBAL Y FUENTE 
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: black;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* ==========================================================================
+   2. HEADER Y NAVEGACIÓN
+   ========================================================================== */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 8%;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(241, 179, 23, 0.2);
+}
+
+header nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 35px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: 0.3s;
+}
+
+header nav a:hover {
+    color: #f1b317;
+}
+
+/* ==========================================================================
+   3. SECCIONES DE CONTENIDO (HERO, SOMOS, MODELOS, EQUIPO)
+   ========================================================================== */
+#hero {
+    height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                url('images/2026-Yamaha-YZF900R9-EU-Icon_Blue-Action-001-03.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.models-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 350px)); 
+    gap: 40px;
+    padding: 20px 8%;
+    justify-content: center; 
+}
+
+.carta {
+    height: 380px; 
+    border-radius: 20px;
+    background-color: #0a0a0a;     
+    transition: 0.4s ease;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.carta:hover {
+    transform: translateY(-15px);
+    border-color: #f1b317;
+    box-shadow: 0 15px 40px rgba(241, 179, 23, 0.15);
+}
+
+body.body-equipo {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), 
+                url('img/derrape_misterioso.jpg') no-repeat center center fixed !important; 
+    background-size: cover !important;
+}
+
+/* ==========================================================================
+   4. SECCIÓN WELCOME / LOGIN (ESTILO PREMIUM DARK)
+   ========================================================================== */
+.welcome-page {
+    height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)), 
+                url('images/fondo.avif');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user_card_welcome {
+    width: 380px;
+    padding: 60px 30px 30px 30px;
+    background: rgba(10, 10, 10, 0.7);
+    backdrop-filter: blur(15px);
+    border: 2px solid #f1b317;
+    border-radius: 25px;
+    box-shadow: 0 0 40px rgba(241, 179, 23, 0.2);
+    position: relative;
+    text-align: center;
+}
+
+.user_card_welcome .brand_logo_container {
+    position: absolute;
+    height: 120px;
+    width: 120px;
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #000;
+    border: 3px solid #f1b317;
+    border-radius: 50%;
+    padding: 5px;
+    box-shadow: 0 0 20px rgba(241, 179, 23, 0.4);
+    overflow: hidden;
+    z-index: 10;
+}
+
+.user_card_welcome .brand_logo {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.welcome_info h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: 3px;
+    margin-bottom: 5px;
+    color: #fff;
+    margin-top: 20px;
+}
+
+.welcome_info h1 span {
+    color: #f1b317;
+}
+
+.welcome_info p {
+    color: #888;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 4px;
+    margin-bottom: 35px;
+}
+
+.welcome_actions {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.btn-welcome {
+    padding: 14px;
+    border-radius: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    text-decoration: none !important;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.btn-gold-fill {
+    background: #f1b317;
+    color: #000 !important;
+    border: 2px solid #f1b317;
+}
+
+.btn-gold-fill:hover {
+    background: #fff;
+    border-color: #fff;
+    transform: translateY(-3px);
+}
+
+.btn-gold-outline {
+    background: transparent;
+    color: #f1b317 !important;
+    border: 2px solid #f1b317;
+}
+
+.btn-gold-outline:hover {
+    background: rgba(241, 179, 23, 0.1);
+    transform: translateY(-3px);
+}
+
+.footer_text_welcome {
+    margin-top: 30px;
+    font-size: 0.7rem;
+    color: #555;
+    letter-spacing: 1px;
+}
+
+/* ==========================================================================
+   5. AJUSTES ESPECÍFICOS PARA TÉRMINOS Y CONDICIONES
+   ========================================================================== */
+.card_terms {
+    width: 600px !important; 
+    max-width: 95%;
+    height: auto;
+    padding: 60px 30px 30px 30px;
+}
+
+.terms-content {
+    color: #ccc;
+    font-size: 0.9rem;
+    max-height: 350px;
+    overflow-y: auto;
+    padding-right: 15px;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.gold-text {
+    color: #f1b317;
+    margin-top: 15px;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.gold-link {
+    color: #f1b317;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.terms-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.terms-content::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.terms-content::-webkit-scrollbar-thumb {
+    background: #f1b317;
+    border-radius: 10px;
+}
+
+/* ==========================================================================
+   6. AJUSTES ESPECÍFICOS PARA FORMULARIO DE REGISTRO
+   ========================================================================== */
+.input-group-text {
+    background: #f1b317 !important;
+    border: none !important;
+    color: black !important;
+    width: 45px;
+    justify-content: center;
+    border-radius: 10px 0 0 10px !important;
+}
+
+.form-control {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(241, 179, 23, 0.2) !important;
+    color: white !important;
+    border-radius: 0 10px 10px 0 !important;
+    transition: 0.3s;
+}
+
+.form-control:focus {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-color: #f1b317 !important;
+    box-shadow: 0 0 10px rgba(241, 179, 23, 0.2);
+    color: white;
+}
+
+.form-control::placeholder {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.terms-link {
+    color: #888;
+    font-size: 0.75rem;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.terms-link:hover {
+    color: #f1b317;
+}
+
+#register-error {
+    font-size: 0.85rem;
+    background: rgba(255, 0, 0, 0.15);
+    border: 1px solid rgba(255, 0, 0, 0.5);
+    color: #ff8888;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.login-link {
+    color: #f1b317 !important;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.login-link:hover {
+    text-decoration: underline !important;
+}

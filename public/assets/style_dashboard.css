@@ -1,0 +1,460 @@
+/* ==========================================================
+    1. RESET Y CONFIGURACIÓN BASE
+   ========================================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #000;
+    color: #fff;
+    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+/* ==========================================================
+    //2. HEADER Y NAVEGACIÓN (RESPONSIVE FIX)
+   ========================================================== */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 8%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(241, 179, 23, 0.3);
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.logo img {
+    height: 45px;
+    width: auto;
+    transition: 0.3s;
+}
+
+header nav {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: nowrap;
+}
+
+header nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    padding: 10px 15px;
+    letter-spacing: 1px;
+    transition: 0.3s;
+    white-space: nowrap;
+}
+
+header nav a:hover {
+    color: #f1b317;
+}
+
+header nav a.active {
+    color: #f1b317;
+    border-bottom: 2px solid #f1b317;
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        padding: 15px 2%;
+        height: auto;
+    }
+
+    .logo {
+        margin-bottom: 15px;
+    }
+
+    header nav {
+        width: 100%;
+        justify-content: center;
+        gap: 5px;
+        flex-wrap: wrap;
+    }
+
+    header nav a {
+        font-size: 0.65rem;
+        padding: 8px 10px;
+        background: rgba(241, 179, 23, 0.05);
+        border-radius: 6px;
+        border: 1px solid rgba(241, 179, 23, 0.15);
+    }
+    
+    .main-container {
+        padding-top: 170px !important;
+    }
+}
+
+/* ==========================================================
+    3. ESTRUCTURA DE PÁGINA 
+   ========================================================== */
+.main-container {
+    width: 92%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 110px;
+    padding-bottom: 60px;
+}
+
+.crud-container, .form-container {
+    background-color: #0a0a0a;
+    padding: 40px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    width: 100%;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.form-container {
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+.form-title {
+    color: #f1b317;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    font-size: 1.6rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    border-left: 4px solid #f1b317;
+    padding-left: 15px;
+}
+
+/* ==========================================================
+    4. COMPONENTES DE TABLA 
+   ========================================================== */
+.user-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 8px;
+    margin-top: 15px;
+}
+
+.user-table th {
+    color: #f1b317;
+    text-align: center;
+    padding: 15px;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 2px solid #222;
+}
+
+.user-table td {
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.02);
+    text-align: center;
+    vertical-align: middle;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.user-table tr td:first-child { border-left: 1px solid rgba(255, 255, 255, 0.05); border-radius: 10px 0 0 10px; }
+.user-table tr td:last-child { border-right: 1px solid rgba(255, 255, 255, 0.05); border-radius: 0 10px 10px 0; }
+
+.table-img {
+    width: 80px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #333;
+    transition: 0.3s;
+}
+
+.table-img:hover { transform: scale(1.1); }
+
+/* ==========================================================
+    5. FORMULARIOS E INPUTS 
+   ========================================================== */
+.input-group, .form-group {
+    margin-bottom: 25px;
+}
+
+.input-group label, .form-group label {
+    display: block;
+    color: #f1b317;
+    margin-bottom: 10px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.input-group input, .input-group textarea, .input-group select,
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 14px;
+    background-color: #121212;
+    border: 1px solid #222;
+    color: #fff;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    outline: none;
+    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.input-group input:focus, .input-group textarea:focus, .form-group input:focus {
+    border-color: #f1b317;
+    background-color: #1a1a1a;
+    box-shadow: 0 0 15px rgba(241, 179, 23, 0.1);
+}
+
+.current-image-preview, .current-img-container {
+    width: 100%;
+    max-width: 350px; 
+    margin: 20px 0;
+    border: 2px dashed #333;
+    border-radius: 12px;
+    background: #050505;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+
+#preview-img {
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+/* ==========================================================
+    6. BOTONES Y ACCIONES 
+   ========================================================== */
+.form-buttons, .actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 35px;
+}
+
+.btn-save, .btn-submit, .btn-update, .btn-edit {
+    background: #f1b317;
+    color: #000 !important;
+    padding: 12px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-save:hover, .btn-update:hover, .btn-edit:hover {
+    background: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(241, 179, 23, 0.3);
+}
+
+.btn-cancel {
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    padding: 12px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    transition: 0.3s;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.btn-cancel:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.btn-delete, .btn-delete-action {
+    background: #dc3545;
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.btn-delete:hover {
+    background: #ff4d5e;
+    transform: scale(1.05);
+}
+
+/* ==========================================================
+    7. GRID DE EQUIPO / MARCAS 
+   ========================================================== */
+.brand-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.brand-card {
+    background-color: #0f0f0f;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.brand-card:hover {
+    border-color: #f1b317;
+    background: #141414;
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+}
+
+.brand-img-container {
+    width: 100%;
+    height: 160px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.brand-img {
+    max-width: 90%;
+    max-height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5));
+}
+
+.hidden-form {
+    display: none;
+}
+
+/* ==========================================================
+    8. PARA REGISTRO 
+   ========================================================== */
+header .logo img {
+    height: 40px !important;
+    width: auto !important;
+}
+
+.form-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 100px;
+    min-height: 80vh;
+}
+
+.subtitle {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 25px;
+    font-style: italic;
+}
+
+.link-back {
+    display: inline-block;
+    margin-top: 20px;
+    color: #f1b317;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    border-bottom: 1px solid transparent;
+    transition: 0.3s;
+}
+
+.link-back:hover {
+    border-bottom: 1px solid #f1b317;
+    letter-spacing: 1px;
+}
+
+/* ==========================================================
+    9. RESPONSIVE Y MEJORAS DE DISEÑO (NUEVO)
+   ========================================================== */
+@media (max-width: 992px) {
+    header {
+        padding: 0 4%;
+    }
+}
+
+.integrante-card {
+    background: #0a0a0a;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.integrante-card:hover {
+    transform: scale(1.03) translateY(-5px);
+    border-color: #f1b317;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+}
+
+.integrante-card img {
+    filter: grayscale(40%);
+    transition: 0.5s ease;
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.integrante-card:hover img {
+    filter: grayscale(0%);
+    transform: scale(1.05);
+}
+
+/* Scrollbar Personalizado */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #000;
+}
+::-webkit-scrollbar-thumb {
+    background: #222;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #f1b317;
+}
+
+.user-nav-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-left: 1px solid rgba(255,255,255,0.2);
+    padding-left: 20px;
+    margin-left: 10px;
+}
+
+.welcome-text {
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.user-icon-circle {
+    color: #ff9800;
+    font-size: 1.2rem;
+}
