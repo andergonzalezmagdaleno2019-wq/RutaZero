@@ -70,7 +70,7 @@
                 @foreach($equipos as $integrante)
                     <div class="carta" style="background-image: url('{{ asset($integrante->imagen_url) }}');">
                         <div class="card-overlay">
-                            <h3>{{ strtoupper($integrante->nombre) }}</h3>
+                            
                             <button type="button" onclick="irAMarca('{{ strtolower($integrante->nombre) }}')">
                                 Ver catálogo
                             </button>

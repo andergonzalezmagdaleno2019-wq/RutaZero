@@ -48,7 +48,7 @@
     
             <div class="mt-4">
                 <div class="d-flex justify-content-center links">
-                    ¿No tienes cuenta? <a href="{{ route('register') }}" class="ml-2">Regístrate</a>
+                    ¿No tienes cuenta? <a href="{{ route('register') }}" class="ml-2 login-link">Regístrate</a>
                 </div>
             </div>
 

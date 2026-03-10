@@ -20,7 +20,7 @@ body {
 }
 
 /* ==========================================================================
-   2. HEADER Y NAVEGACIÓN
+   2. HEADER Y NAVEGACIÓN (CON ANIMACIONES LIGERAS)
    ========================================================================== */
 header {
     position: fixed;
@@ -35,6 +35,13 @@ header {
     background: rgba(0, 0, 0, 0.8);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(241, 179, 23, 0.2);
+    transition: all 0.3s ease;
+}
+
+/* Efecto sutil al hacer scroll (opcional - JavaScript necesario) */
+.header-scrolled {
+    padding: 10px 8%;
+    background: rgba(0, 0, 0, 0.95);
 }
 
 header nav a {
@@ -45,15 +52,32 @@ header nav a {
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 2px;
-    transition: 0.3s;
+    transition: color 0.2s ease;
+    position: relative;
+}
+
+/* Línea inferior sutil en hover */
+header nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #f1b317;
+    transition: width 0.2s ease;
 }
 
 header nav a:hover {
     color: #f1b317;
 }
 
+header nav a:hover::after {
+    width: 100%;
+}
+
 /* ==========================================================================
-   3. SECCIONES DE CONTENIDO (HERO, SOMOS, MODELOS, EQUIPO)
+   3. SECCIONES DE CONTENIDO (ANIMACIONES LIGERAS)
    ========================================================================== */
 #hero {
     height: 100vh;
@@ -65,6 +89,17 @@ header nav a:hover {
     justify-content: center;
     align-items: center;
     text-align: center;
+    animation: fadeIn 0.8s ease-out;
+}
+
+/* Animación de entrada simple */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 .models-grid {
@@ -79,14 +114,14 @@ header nav a:hover {
     height: 380px; 
     border-radius: 20px;
     background-color: #0a0a0a;     
-    transition: 0.4s ease;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
     border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .carta:hover {
-    transform: translateY(-15px);
+    transform: translateY(-8px);
     border-color: #f1b317;
-    box-shadow: 0 15px 40px rgba(241, 179, 23, 0.15);
+    box-shadow: 0 10px 25px rgba(241, 179, 23, 0.15);
 }
 
 body.body-equipo {
@@ -96,7 +131,7 @@ body.body-equipo {
 }
 
 /* ==========================================================================
-   4. SECCIÓN WELCOME / LOGIN (ESTILO PREMIUM DARK)
+   4. SECCIÓN WELCOME / LOGIN (ANIMACIONES LIGERAS)
    ========================================================================== */
 .welcome-page {
     height: 100vh;
@@ -107,6 +142,7 @@ body.body-equipo {
     display: flex;
     align-items: center;
     justify-content: center;
+    animation: fadeIn 0.8s ease-out;
 }
 
 .user_card_welcome {
@@ -116,9 +152,22 @@ body.body-equipo {
     backdrop-filter: blur(15px);
     border: 2px solid #f1b317;
     border-radius: 25px;
-    box-shadow: 0 0 40px rgba(241, 179, 23, 0.2);
+    box-shadow: 0 0 30px rgba(241, 179, 23, 0.2);
     position: relative;
     text-align: center;
+    animation: slideUp 0.6s ease-out;
+}
+
+/* Animación de deslizamiento simple */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .user_card_welcome .brand_logo_container {
@@ -132,9 +181,14 @@ body.body-equipo {
     border: 3px solid #f1b317;
     border-radius: 50%;
     padding: 5px;
-    box-shadow: 0 0 20px rgba(241, 179, 23, 0.4);
+    box-shadow: 0 0 20px rgba(241, 179, 23, 0.3);
     overflow: hidden;
     z-index: 10;
+    transition: box-shadow 0.3s ease;
+}
+
+.user_card_welcome:hover .brand_logo_container {
+    box-shadow: 0 0 30px rgba(241, 179, 23, 0.5);
 }
 
 .user_card_welcome .brand_logo {
@@ -142,6 +196,11 @@ body.body-equipo {
     width: 100%;
     border-radius: 50%;
     object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.user_card_welcome:hover .brand_logo {
+    transform: scale(1.05);
 }
 
 .welcome_info h1 {
@@ -177,7 +236,7 @@ body.body-equipo {
     font-weight: 800;
     text-transform: uppercase;
     text-decoration: none !important;
-    transition: 0.3s;
+    transition: all 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -195,6 +254,7 @@ body.body-equipo {
     background: #fff;
     border-color: #fff;
     transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(241, 179, 23, 0.3);
 }
 
 .btn-gold-outline {
@@ -206,6 +266,7 @@ body.body-equipo {
 .btn-gold-outline:hover {
     background: rgba(241, 179, 23, 0.1);
     transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(241, 179, 23, 0.2);
 }
 
 .footer_text_welcome {
@@ -246,6 +307,12 @@ body.body-equipo {
     color: #f1b317;
     text-decoration: none;
     font-weight: bold;
+    transition: color 0.2s ease;
+}
+
+.gold-link:hover {
+    color: #fff;
+    text-decoration: underline;
 }
 
 .terms-content::-webkit-scrollbar {
@@ -259,6 +326,10 @@ body.body-equipo {
 .terms-content::-webkit-scrollbar-thumb {
     background: #f1b317;
     border-radius: 10px;
+}
+
+.terms-content::-webkit-scrollbar-thumb:hover {
+    background: #ffd700;
 }
 
 /* ==========================================================================
@@ -278,7 +349,7 @@ body.body-equipo {
     border: 1px solid rgba(241, 179, 23, 0.2) !important;
     color: white !important;
     border-radius: 0 10px 10px 0 !important;
-    transition: 0.3s;
+    transition: all 0.3s ease;
 }
 
 .form-control:focus {
@@ -286,6 +357,11 @@ body.body-equipo {
     border-color: #f1b317 !important;
     box-shadow: 0 0 10px rgba(241, 179, 23, 0.2);
     color: white;
+    transform: translateY(-2px);
+}
+
+.form-control:hover {
+    border-color: rgba(241, 179, 23, 0.4) !important;
 }
 
 .form-control::placeholder {
@@ -297,7 +373,7 @@ body.body-equipo {
     color: #888;
     font-size: 0.75rem;
     text-decoration: none;
-    transition: 0.3s;
+    transition: color 0.2s ease;
 }
 
 .terms-link:hover {
@@ -312,14 +388,144 @@ body.body-equipo {
     border-radius: 10px;
     padding: 10px;
     margin-bottom: 20px;
+    animation: shake 0.4s ease-in-out;
+}
+
+/* Animación de shake simple para errores */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
 }
 
 .login-link {
     color: #f1b317 !important;
     font-weight: 800;
     text-decoration: none;
+    transition: color 0.2s ease;
 }
 
 .login-link:hover {
+    color: #fff !important;
     text-decoration: underline !important;
+}
+
+/* ==========================================================================
+   7. ANIMACIONES ADICIONALES LIGERAS
+   ========================================================================== */
+
+/* Animación de fade-in para elementos al cargar */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Animación de slide-up para tarjetas */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Aplicar animaciones a elementos específicos */
+.models-grid .carta {
+    animation: slideUp 0.5s ease-out;
+    animation-fill-mode: both;
+}
+
+/* Retraso escalonado para las tarjetas */
+.models-grid .carta:nth-child(1) { animation-delay: 0.1s; }
+.models-grid .carta:nth-child(2) { animation-delay: 0.2s; }
+.models-grid .carta:nth-child(3) { animation-delay: 0.3s; }
+.models-grid .carta:nth-child(4) { animation-delay: 0.4s; }
+.models-grid .carta:nth-child(5) { animation-delay: 0.5s; }
+.models-grid .carta:nth-child(6) { animation-delay: 0.6s; }
+
+/* ==========================================================================
+   8. MEDIA QUERIES (RESPONSIVE)
+   ========================================================================== */
+@media (max-width: 992px) {
+    header nav a {
+        margin-left: 20px;
+        font-size: 0.75rem;
+    }
+    
+    .user_card_welcome {
+        width: 340px;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        padding: 15px 5%;
+    }
+    
+    header nav {
+        margin-top: 10px;
+    }
+    
+    header nav a {
+        margin: 0 10px;
+        font-size: 0.7rem;
+    }
+    
+    #hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .models-grid {
+        gap: 20px;
+    }
+    
+    .carta {
+        height: 340px;
+    }
+    
+    .user_card_welcome {
+        width: 300px;
+        padding: 50px 20px 20px 20px;
+    }
+    
+    .welcome_info h1 {
+        font-size: 2rem;
+    }
+    
+    .card_terms {
+        width: 90% !important;
+        padding: 50px 20px 20px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    #hero h1 {
+        font-size: 1.8rem;
+    }
+    
+    header nav a {
+        margin: 0 5px;
+        font-size: 0.65rem;
+    }
+    
+    .user_card_welcome {
+        width: 280px;
+    }
+    
+    .welcome_info h1 {
+        font-size: 1.8rem;
+    }
+    
+    .btn-welcome {
+        padding: 12px;
+        font-size: 0.8rem;
+    }
 }

@@ -1,4 +1,4 @@
-/* 1. CONFIGURACIÓN GLOBAL Y FUENTE */
+/* 1. CONFIGURACIÓN GLOBAL Y FUENTE (OPTIMIZADO) */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
 
 * {
@@ -15,9 +15,20 @@ body {
     background-color: black;
     color: white;
     font-family: 'Poppins', sans-serif;
+    position: relative;
+    overflow-x: hidden;
 }
 
-/* 2. HEADER Y NAVEGACIÓN */
+/* EFECTO DE FONDO ELIMINADO - CAUSA LAG */
+/* body::before ELIMINADO */
+
+/* Selección de texto personalizada */
+::selection {
+    background: #f1b317;
+    color: #000;
+}
+
+/* 2. HEADER Y NAVEGACIÓN (LIGERO) */
 header {
     position: fixed;
     top: 0;
@@ -31,11 +42,18 @@ header {
     background: rgba(0, 0, 0, 0.8);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(241, 179, 23, 0.2);
+    transition: all 0.3s ease;
 }
 
 header .logo img {
     height: 45px;
     filter: drop-shadow(0 0 5px rgba(241, 179, 23, 0.3));
+    transition: transform 0.3s ease;
+}
+
+header .logo img:hover {
+    filter: drop-shadow(0 0 15px rgba(241, 179, 23, 0.8));
+    transform: scale(1.05);
 }
 
 header nav a {
@@ -46,11 +64,28 @@ header nav a {
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 2px;
-    transition: 0.3s;
+    transition: color 0.2s ease;
+    position: relative;
+    padding: 5px 0;
+}
+
+header nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #f1b317;
+    transition: width 0.2s ease;
 }
 
 header nav a:hover {
     color: #f1b317;
+}
+
+header nav a:hover::after {
+    width: 100%;
 }
 
 .btn-exit {
@@ -58,18 +93,32 @@ header nav a:hover {
     font-weight: 800 !important;
 }
 
-/* 3. HERO SECTION */
+.btn-exit:hover {
+    color: #ff4444 !important;
+}
+
+/* 3. HERO SECTION (LIGERO) */
 #hero {
     height: 100vh;
     background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-                url('images/2026-Yamaha-YZF900R9-EU-Icon_Blue-Action-001-03.jpg');
+                url('img/r9.png');
     background-size: cover;
     background-position: center;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
+    position: relative;
+    animation: fadeIn 0.8s ease-out;
 }
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* EFECTO HERO GLOW ELIMINADO */
+/* #hero::before ELIMINADO */
 
 #hero h1 {
     font-size: 3.5em;
@@ -77,7 +126,12 @@ header nav a:hover {
     text-shadow: 2px 2px 15px rgba(0,0,0,0.8);
     text-transform: uppercase;
     letter-spacing: 2px;
+    position: relative;
+    z-index: 2;
 }
+
+/* ANIMACIÓN GLITCH ELIMINADA */
+/* @keyframes titleGlitch ELIMINADO */
 
 button {
     font-size: 1.1em;
@@ -88,16 +142,20 @@ button {
     color: white;
     background-color: rgb(88, 14, 14);
     cursor: pointer;
-    transition: 0.3s;
+    transition: all 0.3s ease;
     text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
 }
 
+/* EFECTO DE ONDA SIMPLIFICADO */
 button:hover {
     background-color: rgb(150, 20, 20);
-    transform: scale(1.05);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(150, 20, 20, 0.4);
 }
 
-/* 4. SECCIÓN SOMOS RUTAZERO */
+/* 4. SECCIÓN SOMOS RUTAZERO (LIGERO) */
 #somos-rutazero .container {
     padding: 120px 8%;
     display: flex;
@@ -105,6 +163,18 @@ button:hover {
     gap: 60px;
     max-width: 1400px;
     margin: 0 auto;
+    animation: slideIn 0.8s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 #somos-rutazero .img-container {
@@ -114,20 +184,57 @@ button:hover {
     background-size: cover;
     background-position: center;
     border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
+#somos-rutazero .img-container:hover {
+    transform: scale(1.02);
+    box-shadow: 0 25px 50px rgba(241, 179, 23, 0.2);
+}
+
+/* EFECTO DE BRILLO ELIMINADO */
+/* #somos-rutazero .img-container::before ELIMINADO */
 
 #somos-rutazero .texto {
     flex: 1;
+    animation: slideInRight 0.8s ease-out;
 }
 
-.color-nom { color: #a52a2a; font-weight: 800; }
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
 
-/* 5. SECCIÓN MODELOS/MARCAS */
+.color-nom { 
+    color: #a52a2a; 
+    font-weight: 800;
+    display: inline-block;
+    transition: color 0.2s ease;
+}
+
+.color-nom:hover {
+    color: #f1b317;
+}
+
+/* 5. SECCIÓN MODELOS/MARCAS (LIGERO) */
 #modelos {
     padding: 80px 0;
     text-align: center;
     background-color: #050505;
+    position: relative;
 }
+
+/* FONDO DE REPETICIÓN ELIMINADO */
+/* #modelos::before ELIMINADO */
 
 .models-grid {
     display: grid;
@@ -149,22 +256,30 @@ button:hover {
     background-repeat: no-repeat;
     background-position: center 35%; 
     background-color: #0a0a0a;    
-    transition: 0.4s ease;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
     position: relative;
     border: 1px solid rgba(255, 255, 255, 0.05);
+    overflow: hidden;
 }
 
+/* EFECTO RADIAL ELIMINADO */
+/* .carta::before ELIMINADO */
+
 .carta:hover {
-    transform: translateY(-15px);
+    transform: translateY(-10px);
     border-color: #f1b317;
-    box-shadow: 0 15px 40px rgba(241, 179, 23, 0.15);
+    box-shadow: 0 15px 30px rgba(241, 179, 23, 0.2);
 }
+
+/* ANIMACIÓN ROTATE ELIMINADA */
 
 .card-overlay h3 {
     margin-bottom: 20px;
     font-size: 1.4rem;
     color: #fff;
     letter-spacing: 2px;
+    position: relative;
+    z-index: 2;
 }
 
 .card-overlay button {
@@ -176,15 +291,19 @@ button:hover {
     font-weight: 800;
     cursor: pointer;
     text-transform: uppercase;
-    transition: 0.3s;
+    transition: all 0.3s ease;
     width: 100%;
+    position: relative;
+    z-index: 2;
 }
 
 .card-overlay button:hover {
     background-color: #961414;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(150, 20, 20, 0.3);
 }
 
-/* 6. ESTILOS ESPECÍFICOS DEL CARRUSEL */
+/* 6. ESTILOS ESPECÍFICOS DEL CARRUSEL (LIGERO) */
 .carousel {
     height: 100vh;
     width: 100vw;
@@ -198,12 +317,26 @@ button:hover {
     height: 100%;
     position: absolute;
     inset: 0 0 0 0;
+    opacity: 0;
+    z-index: 1;
+    transition: opacity 0.5s ease;
+}
+
+.carousel .list .item:nth-child(1) {
+    opacity: 1;
+    z-index: 10;
 }
 
 .carousel .list .item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    filter: brightness(0.9);
+    transition: transform 0.3s ease;
+}
+
+.carousel .list .item:hover img {
+    transform: scale(1.02);
 }
 
 .carousel .list .item .content {
@@ -217,6 +350,7 @@ button:hover {
     box-sizing: border-box;
     color: #fff;
     text-shadow: 0 5px 10px rgba(0, 0, 0, 0.8);
+    z-index: 20;
 }
 
 .carousel .list .item .title {
@@ -224,13 +358,18 @@ button:hover {
     font-size: 2em;
     letter-spacing: 5px;
     color: #f1b317;
+    text-transform: uppercase;
 }
+
+/* ANIMACIÓN TITLE GLOW ELIMINADA */
 
 .carousel .list .item .name {
     font-weight: 800;
     font-size: 5em;
     line-height: 1em;
     text-transform: uppercase;
+    color: #fff;
+    margin: 10px 0;
 }
 
 .carousel .list .item .des {
@@ -247,7 +386,13 @@ button:hover {
     text-decoration: none;
     font-weight: bold;
     border-radius: 5px;
-    transition: 0.3s;
+    transition: all 0.3s ease;
+}
+
+.btn-more:hover {
+    background-color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(241, 179, 23, 0.3);
 }
 
 .arrows {
@@ -270,16 +415,17 @@ button:hover {
     font-family: monospace;
     font-weight: bold;
     cursor: pointer;
-    transition: 0.5s;
+    transition: all 0.3s ease;
 }
 
 .arrows button:hover {
     background-color: #f1b317;
     color: #000;
     border-color: #f1b317;
+    transform: scale(1.1);
 }
 
-/* 7. ANIMACIONES DE ENTRADA */
+/* 7. ANIMACIONES DE ENTRADA (LIGERAS) */
 .carousel .list .item:nth-child(1) {
     z-index: 1;
 }
@@ -288,25 +434,19 @@ button:hover {
 .carousel .list .item:nth-child(1) .content .name,
 .carousel .list .item:nth-child(1) .content .des,
 .carousel .list .item:nth-child(1) .content .btn-more {
-    transform: translateY(50px);
-    filter: blur(20px);
+    transform: translateY(30px);
     opacity: 0;
-    animation: showContent .5s 1s linear 1 forwards;
+    animation: showContentSimple 0.5s ease 0.5s forwards;
 }
 
-@keyframes showContent {
+@keyframes showContentSimple {
     to {
         transform: translateY(0);
-        filter: blur(0);
         opacity: 1;
     }
 }
 
-.carousel .list .item:nth-child(1) .content .name { animation-delay: 1.2s; }
-.carousel .list .item:nth-child(1) .content .des { animation-delay: 1.4s; }
-.carousel .list .item:nth-child(1) .content .btn-more { animation-delay: 1.6s; }
-
-/* 8. SECCIÓN CONTACTO */
+/* 8. SECCIÓN CONTACTO (LIGERO) */
 .contacto-section {
     min-height: 100vh;
     display: flex; 
@@ -317,7 +457,11 @@ button:hover {
     background-size: cover; 
     background-position: center;
     padding: 100px 20px 20px 20px;
+    position: relative;
 }
+
+/* EFECTO CONTACT GLOW ELIMINADO */
+/* .contacto-section::before ELIMINADO */
 
 .form-container {
     width: 100%;
@@ -328,6 +472,20 @@ button:hover {
     border: 1px solid rgba(241, 179, 23, 0.1);
     backdrop-filter: blur(5px);
     text-align: center;
+    position: relative;
+    z-index: 2;
+    animation: formAppearSimple 0.6s ease-out;
+}
+
+@keyframes formAppearSimple {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .form-container h1 { 
@@ -335,7 +493,11 @@ button:hover {
     color: #f1b317; 
     letter-spacing: 3px; 
     margin-bottom: 10px; 
+    position: relative;
+    display: inline-block;
 }
+
+/* ANIMACIÓN LINE WIDTH ELIMINADA */
 
 .form-container p {
     margin-bottom: 25px;
@@ -357,7 +519,7 @@ button:hover {
     color: #fff; 
     border-radius: 8px;
     outline: none; 
-    transition: 0.3s;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
     font-family: 'Poppins', sans-serif;
 }
 
@@ -377,21 +539,26 @@ button:hover {
     font-weight: 800; 
     cursor: pointer;
     text-transform: uppercase;
-    transition: 0.3s;
+    transition: all 0.3s ease;
 }
 
 .btn-submit:hover { 
     background: #fff; 
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(241, 179, 23, 0.3);
 }
 
-/* 9. SECCIÓN EQUIPO */
+/* 9. SECCIÓN EQUIPO (LIGERO) */
 body.body-equipo {
     background: 
         linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), 
         url('img/derrape_misterioso.jpg') no-repeat center center fixed !important; 
     background-size: cover !important;
+    position: relative;
 }
+
+/* EFECTO DE REPETICIÓN ELIMINADO */
+/* body.body-equipo::before ELIMINADO */
 
 .container.equipo-page {
     display: flex !important;
@@ -410,11 +577,12 @@ body.body-equipo {
     font-size: 3rem;
     letter-spacing: -1px;
     margin-bottom: 60px; 
-    text-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
     text-transform: uppercase;
     width: 100%;
     color: white;
 }
+
+/* ANIMACIÓN TEAM TITLE GLOW ELIMINADA */
 
 .equipo-page .grid-container {
     display: grid;
@@ -435,13 +603,19 @@ body.body-equipo {
     border-bottom: 3px solid #ff0000; 
     border-radius: 20px; 
     padding: 30px;
-    transition: all 0.4s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
+/* EFECTO RADIAL ELIMINADO */
+/* .equipo-page .card::before ELIMINADO */
+
 .equipo-page .card:hover {
-    transform: translateY(-15px);
+    transform: translateY(-10px);
     background: rgba(255, 255, 255, 0.07); 
-    box-shadow: 0 20px 40px rgba(255, 0, 0, 0.4);
+    box-shadow: 0 20px 40px rgba(255, 0, 0, 0.3);
+    border-color: #ff0000;
 }
 
 .equipo-page .card img {
@@ -451,6 +625,12 @@ body.body-equipo {
     object-fit: contain; 
     margin: 0 auto 20px auto;
     display: block;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
+    transition: transform 0.3s ease;
+}
+
+.equipo-page .card:hover img {
+    transform: scale(1.05);
 }
 
 .equipo-page .card h3 {
@@ -458,11 +638,13 @@ body.body-equipo {
     font-style: italic;
     font-weight: 900;
     letter-spacing: 2px;
-    background: linear-gradient(90deg, #fff, #888); 
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #fff;
     margin-bottom: 10px;
+    transition: color 0.3s ease;
+}
+
+.equipo-page .card:hover h3 {
+    color: #ff0000;
 }
 
 .equipo-page .card p {
@@ -471,13 +653,13 @@ body.body-equipo {
     line-height: 1.5;
 }
 
-/* 10. CAROUSEL LÓGICA */
+/* 10. CAROUSEL LÓGICA (LIGERO) */
 .carousel .list .item {
     position: absolute;
     inset: 0 0 0 0;
     opacity: 0;
     z-index: 1;
-    transition: opacity 0.8s ease-in-out;
+    transition: opacity 0.5s ease;
 }
 
 .carousel .list .item:nth-child(1) {
@@ -494,7 +676,7 @@ body.body-equipo {
     z-index: 100;
 }
 
-/* 11. AJUSTE DE IMÁGENES CARRUSEL */
+/* 11. AJUSTE DE IMÁGENES CARRUSEL (LIGERO) */
 .carousel .list .item img {
     position: absolute;
     right: 2%;
@@ -504,8 +686,15 @@ body.body-equipo {
     object-fit: contain; 
     max-width: 1200px; 
     z-index: 5;
-    filter: drop-shadow(0 0 10px rgba(245, 175, 0, 0.6));
+    filter: drop-shadow(0 0 10px rgba(245, 175, 0, 0.4));
     image-rendering: -webkit-optimize-contrast;
+    transition: filter 0.3s ease;
+}
+
+/* ANIMACIÓN BIKE FLOAT ELIMINADA */
+
+.carousel .list .item:hover img {
+    filter: drop-shadow(0 0 20px rgba(241, 179, 23, 0.6));
 }
 
 .carousel .list .item .content {
@@ -526,7 +715,11 @@ body.body-equipo {
     letter-spacing: 5px;
     color: #f1b317;
     text-transform: uppercase;
+    position: relative;
+    display: inline-block;
 }
+
+/* ANIMACIÓN BRAND LINE ELIMINADA */
 
 .carousel .list .item .model, 
 .carousel .list .item .name {
@@ -536,7 +729,7 @@ body.body-equipo {
     text-transform: uppercase;
     margin: 10px 0;
     color: #fff;
-    text-shadow: 2px 2px 15px rgba(0,0,0,0.8);
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
 }
 
 .carousel .list .item .details,
@@ -550,10 +743,15 @@ body.body-equipo {
     background: rgba(0, 0, 0, 0.6);
     padding: 8px 15px;
     border-left: 4px solid #f1b317;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(5px);
+    transition: transform 0.2s ease;
 }
 
-/* 12. BOTONES INTERFAZ */
+.carousel .list .item .details p:hover {
+    transform: translateX(5px);
+}
+
+/* 12. BOTONES INTERFAZ (LIGERO) */
 .btn-interest, .btn-more {
     background-color: #f1b317;
     color: #000 !important;
@@ -562,37 +760,160 @@ body.body-equipo {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: 0.3s;
+    transition: all 0.3s ease;
     text-decoration: none;
     display: inline-block;
 }
 
 .btn-interest:hover {
     background-color: #fff;
-    transform: scale(1.05);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(241, 179, 23, 0.3);
 }
 
-.carousel .list .item:nth-child(1) .content .brand,
-.carousel .list .item:nth-child(1) .content .title,
-.carousel .list .item:nth-child(1) .content .model,
-.carousel .list .item:nth-child(1) .content .name,
-.carousel .list .item:nth-child(1) .content .details,
-.carousel .list .item:nth-child(1) .content .btn-more {
-    transform: translateY(30px);
-    filter: blur(10px);
+/* ==========================================================
+    13. EFECTOS ESPECIALES GLOBALES (LIGEROS)
+   ========================================================== */
+
+/* Scrollbar personalizada simple */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #000;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #f1b317;
+}
+
+/* Tooltips personalizados (OPCIONAL - PUEDES ELIMINARLOS SI NO LOS USAS) */
+[data-tooltip] {
+    position: relative;
+    cursor: help;
+}
+
+[data-tooltip]::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-5px);
+    padding: 5px 10px;
+    background: #f1b317;
+    color: #000;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    border-radius: 3px;
     opacity: 0;
-    animation: showContent 0.5s ease forwards;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+    pointer-events: none;
+    z-index: 1000;
 }
 
-.carousel .list .item:nth-child(1) .content .brand { animation-delay: 0.2s; }
-.carousel .list .item:nth-child(1) .content .model { animation-delay: 0.4s; }
-.carousel .list .item:nth-child(1) .content .details { animation-delay: 0.6s; }
-.carousel .list .item:nth-child(1) .content .btn-more { animation-delay: 0.8s; }
+[data-tooltip]:hover::before {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(-10px);
+}
 
-@keyframes showContent {
-    to {
-        transform: translateY(0);
-        filter: blur(0);
-        opacity: 1;
+/* Efecto de carga simple */
+.loading-spinner {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border: 2px solid rgba(241, 179, 23, 0.3);
+    border-radius: 50%;
+    border-top-color: #f1b317;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ==========================================================
+    14. MEDIA QUERIES
+   ========================================================== */
+@media (max-width: 992px) {
+    .carousel .list .item .content {
+        width: 80%;
+        left: 5%;
+    }
+    
+    .carousel .list .item .model, 
+    .carousel .list .item .name {
+        font-size: 3.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        padding: 15px 5%;
+    }
+    
+    header nav {
+        margin-top: 10px;
+    }
+    
+    header nav a {
+        margin: 0 10px;
+        font-size: 0.7rem;
+    }
+    
+    #hero h1 {
+        font-size: 2.5em;
+    }
+    
+    .carousel .list .item .content {
+        width: 90%;
+        left: 5%;
+    }
+    
+    .carousel .list .item .model, 
+    .carousel .list .item .name {
+        font-size: 2.5rem;
+    }
+    
+    .carousel .list .item img {
+        width: 90vw;
+        height: 50vh;
+        right: 5%;
+    }
+    
+    #somos-rutazero .container {
+        flex-direction: column;
+        padding: 80px 5%;
+    }
+    
+    .form-container {
+        padding: 30px 20px;
+    }
+    
+    .equipo-page h1 {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #hero h1 {
+        font-size: 1.8em;
+    }
+    
+    .carousel .list .item .model, 
+    .carousel .list .item .name {
+        font-size: 1.8rem;
+    }
+    
+    .btn-interest, .btn-more {
+        padding: 12px 25px;
     }
 }
