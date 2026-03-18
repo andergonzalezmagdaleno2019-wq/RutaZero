@@ -14,10 +14,13 @@
         </div>
         <div class="container">
             <nav>
-                <a href="/admin/dashboard" class="active">Usuarios</a>
-                <a href="/admin/equipo">Equipo</a>
-                <a href="/admin/modelos">Modelos</a>
-                <a href="/admin/contacto">Mensajes</a>
+                <a href="{{ route('admin.dashboard') }}" class="{{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">Usuarios</a>
+                <a href="{{ route('admin.equipo.index') }}" class="{{ request()->routeIs('admin.equipo.*') ? 'active' : '' }}">Equipo</a>
+                <a href="{{ route('admin.modelos.index') }}" class="{{ request()->routeIs('admin.modelos.*') ? 'active' : '' }}">Modelos</a>
+                <a href="{{ route('admin.especificaciones.index') }}" class="{{ request()->routeIs('admin.especificaciones.*') ? 'active' : '' }}">Especificaciones</a>
+
+                <a href="{{ route('admin.contactos.index') }}" class="{{ request()->routeIs('admin.contactos.*') ? 'active' : '' }}">Mensajes</a>
+                
                 <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                     {{ __('Salir') }}
                 </a>

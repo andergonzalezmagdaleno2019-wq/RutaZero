@@ -17,7 +17,7 @@ body {
     position: relative;
 }
 
-/* Efecto de fondo dinámico */
+/* Efecto de fondo dinámico - REDUCIDO */
 body::before {
     content: '';
     position: fixed;
@@ -28,12 +28,12 @@ body::before {
     background: radial-gradient(circle at 20% 50%, rgba(241, 179, 23, 0.03) 0%, transparent 50%);
     pointer-events: none;
     z-index: -1;
-    animation: pulseGlow 8s ease-in-out infinite;
+    animation: pulseGlow 12s ease-in-out infinite; /* Más lento */
 }
 
 @keyframes pulseGlow {
-    0%, 100% { opacity: 0.3; transform: scale(1); }
-    50% { opacity: 0.6; transform: scale(1.2); }
+    0%, 100% { opacity: 0.2; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(1.1); } /* Menos intenso */
 }
 
 /* ==========================================================
@@ -122,7 +122,7 @@ header nav a.active {
 }
 
 /* ==========================================================
-    3. ESTRUCTURA DE PÁGINA (ESTILO AGGRESSIVE)
+    3. ESTRUCTURA DE PÁGINA (ESTILO AGGRESSIVE - REDUCIDO)
    ========================================================== */
 .main-container {
     width: 92%;
@@ -130,19 +130,17 @@ header nav a.active {
     margin: 0 auto;
     padding-top: 120px;
     padding-bottom: 80px;
-    animation: aggressiveEntry 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    animation: aggressiveEntry 0.6s ease-out; /* Más suave */
 }
 
 @keyframes aggressiveEntry {
     0% {
         opacity: 0;
-        transform: scale(0.9) translateY(100px);
-        filter: blur(10px);
+        transform: translateY(30px); /* Menos movimiento */
     }
     100% {
         opacity: 1;
-        transform: scale(1) translateY(0);
-        filter: blur(0);
+        transform: translateY(0);
     }
 }
 
@@ -155,15 +153,14 @@ header nav a.active {
     box-shadow: 0 20px 40px rgba(0,0,0,0.6);
     position: relative;
     overflow: hidden;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all 0.3s ease; /* Transición más simple */
 }
 
 .crud-container:hover, .form-container:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 30px 60px rgba(241, 179, 23, 0.2);
-    border-color: rgba(241, 179, 23, 0.2);
+    transform: translateY(-3px); /* Menos movimiento */
+    box-shadow: 0 25px 50px rgba(241, 179, 23, 0.15); /* Menos intenso */
+    border-color: rgba(241, 179, 23, 0.15);
 }
-
 
 .form-container {
     max-width: 650px;
@@ -193,17 +190,17 @@ header nav a.active {
     width: 50px;
     height: 3px;
     background: #f1b317;
-    box-shadow: 0 0 10px #f1b317;
-    animation: titlePulse 2s ease-in-out infinite;
+    box-shadow: 0 0 8px #f1b317; /* Menos glow */
+    animation: titlePulse 3s ease-in-out infinite; /* Más lento */
 }
 
 @keyframes titlePulse {
     0%, 100% { width: 50px; opacity: 0.5; }
-    50% { width: 100px; opacity: 1; }
+    50% { width: 80px; opacity: 0.8; } /* Menos cambio */
 }
 
 /* ==========================================================
-    4. COMPONENTES DE TABLA (LOOK AGGRESSIVE)
+    4. COMPONENTES DE TABLA (LOOK AGGRESSIVE - REDUCIDO)
    ========================================================== */
 .user-table {
     width: 100%;
@@ -233,12 +230,12 @@ header nav a.active {
     width: 100%;
     height: 2px;
     background: linear-gradient(90deg, transparent, #f1b317, transparent);
-    animation: thFlash 3s infinite;
+    animation: thFlash 4s infinite; /* Más lento */
 }
 
 @keyframes thFlash {
     0%, 100% { opacity: 0.3; }
-    50% { opacity: 1; }
+    50% { opacity: 0.7; } /* Menos intenso */
 }
 
 .user-table td {
@@ -248,24 +245,24 @@ header nav a.active {
     vertical-align: middle;
     border-top: 1px solid rgba(255, 255, 255, 0.03);
     border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transition: all 0.2s ease; /* Transición más simple */
     position: relative;
     z-index: 1;
 }
 
 .user-table tr {
     position: relative;
-    transition: transform 0.3s;
+    transition: transform 0.2s;
 }
 
 .user-table tr:hover {
-    transform: scale(1.02) translateY(-2px);
+    transform: scale(1.01) translateY(-1px); /* Menos escala */
     z-index: 10;
 }
 
 .user-table tr:hover td {
     background: #161616;
-    border-color: rgba(241, 179, 23, 0.3);
+    border-color: rgba(241, 179, 23, 0.2);
 }
 
 .user-table tr td:first-child { 
@@ -284,20 +281,20 @@ header nav a.active {
     object-fit: cover;
     border-radius: 10px;
     border: 1px solid #333;
-    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transition: all 0.3s ease; /* Transición más simple */
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     filter: brightness(0.9) contrast(1.1);
 }
 
 .table-img:hover { 
-    transform: scale(1.25) rotate(3deg); 
+    transform: scale(1.15) rotate(2deg); /* Menos rotación */
     border-color: #f1b317;
-    filter: brightness(1.2) contrast(1.2);
-    box-shadow: 0 10px 30px rgba(241, 179, 23, 0.5);
+    filter: brightness(1.1) contrast(1.1);
+    box-shadow: 0 8px 25px rgba(241, 179, 23, 0.4);
 }
 
 /* ==========================================================
-    5. FORMULARIOS E INPUTS (POWER MODE)
+    5. FORMULARIOS E INPUTS (POWER MODE - REDUCIDO)
    ========================================================== */
 .input-group, .form-group {
     margin-bottom: 28px;
@@ -312,12 +309,12 @@ header nav a.active {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
-    transition: all 0.3s;
+    transition: all 0.2s;
 }
 
 .input-group:hover label, .form-group:hover label {
-    transform: translateX(5px);
-    text-shadow: 0 0 5px #f1b317;
+    transform: translateX(3px); /* Menos desplazamiento */
+    text-shadow: 0 0 3px #f1b317; /* Menos glow */
 }
 
 .input-group input, .input-group textarea, .input-group select,
@@ -330,14 +327,14 @@ header nav a.active {
     border-radius: 10px;
     font-size: 0.95rem;
     outline: none;
-    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transition: all 0.2s ease; /* Transición más simple */
 }
 
 .input-group input:focus, .input-group textarea:focus, .form-group input:focus {
     border-color: #f1b317;
     background-color: #181818;
-    box-shadow: 0 0 30px rgba(241, 179, 23, 0.2);
-    transform: scale(1.02);
+    box-shadow: 0 0 20px rgba(241, 179, 23, 0.15); /* Menos glow */
+    transform: scale(1.01); /* Menos escala */
 }
 
 .current-image-preview, .current-img-container {
@@ -352,13 +349,13 @@ header nav a.active {
     justify-content: center;
     align-items: center;
     padding: 20px;
-    transition: all 0.3s;
+    transition: all 0.2s;
 }
 
 .current-img-container:hover {
     border-color: #f1b317;
-    box-shadow: 0 0 30px rgba(241, 179, 23, 0.2);
-    transform: scale(1.02);
+    box-shadow: 0 0 20px rgba(241, 179, 23, 0.15);
+    transform: scale(1.01);
 }
 
 #preview-img {
@@ -368,7 +365,7 @@ header nav a.active {
 }
 
 /* ==========================================================
-    6. BOTONES Y ACCIONES (POWER-UP COMPLETO)
+    6. BOTONES Y ACCIONES (POWER-UP - REDUCIDO)
    ========================================================== */
 .form-buttons, .actions {
     display: flex;
@@ -383,7 +380,7 @@ header nav a.active {
     align-items: center;
     justify-content: center;
     gap: 12px;
-    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transition: all 0.2s ease; /* Transición más simple */
     position: relative;
     overflow: hidden;
     cursor: pointer;
@@ -392,36 +389,13 @@ header nav a.active {
     letter-spacing: 1px;
 }
 
-/* Efecto de onda expansiva para todos los botones */
-.btn-save::after, .btn-submit::after, .btn-update::after, .btn-edit::after,
-.btn-create::after, .btn-add-brand::after, .btn-edit-link::after,
-.btn-cancel::after, .btn-delete::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.3);
-    transform: translate(-50%, -50%);
-    transition: width 0.6s, height 0.6s;
-    z-index: 0;
-}
+/* Efecto de onda expansiva - ELIMINADO */
 
-.btn-save:hover::after, .btn-submit:hover::after, .btn-update:hover::after,
-.btn-edit:hover::after, .btn-create:hover::after, .btn-add-brand:hover::after,
-.btn-edit-link:hover::after, .btn-cancel:hover::after, .btn-delete:hover::after {
-    width: 300px;
-    height: 300px;
-}
-
-/* Iconos con animación */
 .btn-save::before, .btn-submit::before, .btn-update::before {
     content: '⚡';
     font-size: 1.2rem;
-    filter: drop-shadow(0 0 5px #f1b317);
-    animation: iconPulse 2s infinite;
+    filter: drop-shadow(0 0 3px #f1b317);
+    /* Animación eliminada */
 }
 
 .btn-cancel::before {
@@ -432,14 +406,7 @@ header nav a.active {
 .btn-delete::before, .btn-delete-action::before {
     content: '🔥';
     font-size: 1.2rem;
-    animation: flameFlicker 1.5s infinite;
-}
-
-@keyframes flameFlicker {
-    0%, 100% { transform: scale(1); opacity: 1; }
-    25% { transform: scale(1.2); opacity: 0.8; }
-    50% { transform: scale(0.9); opacity: 1; }
-    75% { transform: scale(1.1); opacity: 0.9; }
+    /* Animación eliminada */
 }
 
 .btn-save, .btn-submit, .btn-update, .btn-edit {
@@ -455,8 +422,8 @@ header nav a.active {
 
 .btn-save:hover, .btn-update:hover, .btn-edit:hover {
     background: #fff;
-    transform: translateY(-4px) scale(1.05);
-    box-shadow: 0 15px 30px rgba(241, 179, 23, 0.5);
+    transform: translateY(-2px) scale(1.02); /* Menos transformación */
+    box-shadow: 0 10px 25px rgba(241, 179, 23, 0.4);
 }
 
 .btn-cancel {
@@ -473,9 +440,9 @@ header nav a.active {
 .btn-cancel:hover {
     background: rgba(255, 255, 255, 0.12);
     color: #f1b317;
-    transform: translateY(-4px) scale(1.05);
+    transform: translateY(-2px) scale(1.02);
     border-color: #f1b317;
-    box-shadow: 0 10px 20px rgba(241, 179, 23, 0.2);
+    box-shadow: 0 8px 15px rgba(241, 179, 23, 0.15);
 }
 
 .btn-delete, .btn-delete-action {
@@ -494,13 +461,13 @@ header nav a.active {
 .btn-delete:hover {
     background: #dc3545;
     color: #fff;
-    transform: scale(1.1) translateY(-3px);
-    box-shadow: 0 15px 30px rgba(220, 53, 69, 0.4);
+    transform: scale(1.05) translateY(-2px); /* Menos escala */
+    box-shadow: 0 10px 25px rgba(220, 53, 69, 0.3);
     border-color: transparent;
 }
 
 /* ==========================================================
-    6.1 NUEVOS BOTONES (MEGA POWER-UP)
+    6.1 NUEVOS BOTONES (POWER-UP - REDUCIDO)
    ========================================================== */
 
 /* Botón Registrar Nuevo */
@@ -520,24 +487,17 @@ header nav a.active {
 .btn-create::before {
     content: '⚡';
     font-size: 1.3rem;
-    animation: lightning 1.5s infinite;
-}
-
-@keyframes lightning {
-    0%, 100% { transform: rotate(0deg) scale(1); }
-    25% { transform: rotate(10deg) scale(1.2); }
-    50% { transform: rotate(-5deg) scale(1.1); }
-    75% { transform: rotate(5deg) scale(1.15); }
+    /* Animación eliminada */
 }
 
 .btn-create:hover {
     background: linear-gradient(135deg, #ffd700, #f1b317);
-    transform: translateY(-6px) scale(1.08);
-    box-shadow: 0 20px 40px rgba(241, 179, 23, 0.6);
+    transform: translateY(-3px) scale(1.03); /* Menos transformación */
+    box-shadow: 0 15px 30px rgba(241, 179, 23, 0.5);
 }
 
 .btn-create:active {
-    transform: translateY(-2px) scale(1.02);
+    transform: translateY(-1px) scale(1.01);
 }
 
 /* Botón Añadir Nueva Marca / Moto */
@@ -559,14 +519,7 @@ header nav a.active {
 .btn-add-brand::before {
     content: '🏍️';
     font-size: 1.3rem;
-    animation: motorcycleVibration 1.2s infinite;
-}
-
-@keyframes motorcycleVibration {
-    0%, 100% { transform: translateX(0) rotate(0deg); }
-    25% { transform: translateX(2px) rotate(2deg); }
-    50% { transform: translateX(-2px) rotate(-2deg); }
-    75% { transform: translateX(1px) rotate(1deg); }
+    /* Animación eliminada */
 }
 
 .btn-add-brand::after {
@@ -583,8 +536,8 @@ header nav a.active {
 
 .btn-add-brand:hover {
     color: #000 !important;
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 15px 30px rgba(241, 179, 23, 0.3);
+    transform: translateY(-3px) scale(1.02); /* Menos transformación */
+    box-shadow: 0 10px 25px rgba(241, 179, 23, 0.25);
     border-color: transparent;
     background: #f1b317;
 }
@@ -610,28 +563,19 @@ header nav a.active {
 .btn-edit-link::before {
     content: '⚙️';
     font-size: 1rem;
-    animation: gearRotate 3s infinite linear;
-}
-
-@keyframes gearRotate {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+    /* Animación eliminada */
 }
 
 .btn-edit-link:hover {
     background: #f1b317;
     color: #000 !important;
-    transform: translateY(-5px) scale(1.1);
-    box-shadow: 0 10px 25px rgba(241, 179, 23, 0.5);
+    transform: translateY(-3px) scale(1.05); /* Menos transformación */
+    box-shadow: 0 8px 20px rgba(241, 179, 23, 0.4);
     border-color: transparent;
 }
 
-.btn-edit-link:hover::before {
-    animation: gearRotate 1s infinite linear;
-}
-
 /* ==========================================================
-    7. GRID DE EQUIPO / MARCAS (MÁS PODEROSO)
+    7. GRID DE EQUIPO / MARCAS (REDUCIDO)
    ========================================================== */
 .brand-grid {
     display: grid;
@@ -646,7 +590,7 @@ header nav a.active {
     border-radius: 20px;
     padding: 40px;
     text-align: center;
-    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transition: all 0.3s ease; /* Transición más simple */
     position: relative;
     overflow: hidden;
 }
@@ -659,7 +603,7 @@ header nav a.active {
     width: 100%;
     height: 100%;
     background: linear-gradient(90deg, transparent, rgba(241, 179, 23, 0.1), transparent);
-    transition: left 0.6s;
+    transition: left 0.5s; /* Más rápido */
 }
 
 .brand-card:hover::before {
@@ -669,8 +613,8 @@ header nav a.active {
 .brand-card:hover {
     border-color: #f1b317;
     background: #111;
-    transform: translateY(-20px) scale(1.02);
-    box-shadow: 0 30px 60px rgba(241, 179, 23, 0.3);
+    transform: translateY(-10px) scale(1.01); /* Menos transformación */
+    box-shadow: 0 20px 40px rgba(241, 179, 23, 0.2);
 }
 
 .brand-img-container {
@@ -688,12 +632,12 @@ header nav a.active {
     max-height: 100%;
     object-fit: contain;
     filter: drop-shadow(0 10px 15px rgba(0,0,0,0.6));
-    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transition: all 0.3s ease; /* Transición más simple */
 }
 
 .brand-card:hover .brand-img {
-    transform: scale(1.2) rotate(5deg);
-    filter: drop-shadow(0 20px 30px rgba(241, 179, 23, 0.4));
+    transform: scale(1.1) rotate(3deg); /* Menos escala y rotación */
+    filter: drop-shadow(0 15px 25px rgba(241, 179, 23, 0.3));
 }
 
 .hidden-form {
@@ -701,7 +645,7 @@ header nav a.active {
 }
 
 /* ==========================================================
-    8. PARA REGISTRO Y LOGIN (MEJORADO)
+    8. PARA REGISTRO Y LOGIN (REDUCIDO)
    ========================================================== */
 header .logo img {
     height: 40px !important;
@@ -714,12 +658,7 @@ header .logo img {
     align-items: center;
     padding-top: 100px;
     min-height: 85vh;
-    animation: formGlow 3s infinite;
-}
-
-@keyframes formGlow {
-    0%, 100% { filter: brightness(1); }
-    50% { filter: brightness(1.05); }
+    /* Animación eliminada */
 }
 
 .subtitle {
@@ -740,12 +679,7 @@ header .logo img {
     width: 50px;
     height: 2px;
     background: #f1b317;
-    animation: subtitleLine 3s infinite;
-}
-
-@keyframes subtitleLine {
-    0%, 100% { width: 50px; left: 0; }
-    50% { width: 100px; left: 50%; transform: translateX(-50%); }
+    /* Animación eliminada */
 }
 
 .link-back {
@@ -757,7 +691,7 @@ header .logo img {
     font-size: 0.85rem;
     text-transform: uppercase;
     border-bottom: 1px solid transparent;
-    transition: all 0.3s;
+    transition: all 0.2s;
     letter-spacing: 1px;
     position: relative;
 }
@@ -765,22 +699,22 @@ header .logo img {
 .link-back::before {
     content: '←';
     margin-right: 8px;
-    transition: transform 0.3s;
+    transition: transform 0.2s;
     display: inline-block;
 }
 
 .link-back:hover {
     border-bottom: 1px solid #f1b317;
-    letter-spacing: 3px;
-    transform: translateX(-5px);
+    letter-spacing: 2px; /* Menos cambio */
+    transform: translateX(-3px);
 }
 
 .link-back:hover::before {
-    transform: translateX(-5px);
+    transform: translateX(-3px);
 }
 
 /* ==========================================================
-    9. RESPONSIVE Y MEJORAS DE DISEÑO (POWER MODE)
+    9. RESPONSIVE Y MEJORAS DE DISEÑO (POWER MODE - REDUCIDO)
    ========================================================== */
 @media (max-width: 992px) {
     header {
@@ -793,7 +727,7 @@ header .logo img {
     border-radius: 20px;
     overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.05);
-    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transition: all 0.3s ease; /* Transición más simple */
     position: relative;
 }
 
@@ -806,7 +740,7 @@ header .logo img {
     height: 100%;
     background: linear-gradient(45deg, transparent, rgba(241, 179, 23, 0.1), transparent);
     transform: translateX(-100%);
-    transition: transform 0.6s;
+    transition: transform 0.5s; /* Más rápido */
 }
 
 .integrante-card:hover::before {
@@ -814,25 +748,25 @@ header .logo img {
 }
 
 .integrante-card:hover {
-    transform: scale(1.05) translateY(-12px);
+    transform: scale(1.03) translateY(-8px); /* Menos transformación */
     border-color: #f1b317;
-    box-shadow: 0 30px 60px rgba(241, 179, 23, 0.4);
+    box-shadow: 0 20px 40px rgba(241, 179, 23, 0.3);
 }
 
 .integrante-card img {
-    filter: grayscale(60%) brightness(0.8);
-    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    filter: grayscale(40%) brightness(0.9); /* Menos filtro */
+    transition: all 0.4s ease; /* Transición más simple */
     width: 100%;
     height: 280px;
     object-fit: cover;
 }
 
 .integrante-card:hover img {
-    filter: grayscale(0%) brightness(1.1);
-    transform: scale(1.15);
+    filter: grayscale(0%) brightness(1.05);
+    transform: scale(1.1); /* Menos escala */
 }
 
-/* Scrollbar Personalizado (AGGRESSIVE MODE) */
+/* Scrollbar Personalizado (sin cambios) */
 ::-webkit-scrollbar {
     width: 14px;
 }
@@ -866,7 +800,7 @@ header .logo img {
     padding-left: 20px;
     margin-left: 10px;
     position: relative;
-    transition: all 0.3s;
+    transition: all 0.2s;
 }
 
 .user-nav-box:hover {
@@ -884,17 +818,12 @@ header .logo img {
 .user-icon-circle {
     color: #f1b317;
     font-size: 1.3rem;
-    transition: all 0.3s;
-    animation: userIconGlow 2s infinite;
-}
-
-@keyframes userIconGlow {
-    0%, 100% { filter: drop-shadow(0 0 5px #f1b317); }
-    50% { filter: drop-shadow(0 0 15px #f1b317); }
+    transition: all 0.2s;
+    /* Animación eliminada */
 }
 
 .user-nav-box:hover .user-icon-circle {
-    transform: rotate(360deg) scale(1.2);
+    transform: rotate(180deg) scale(1.1); /* Menos rotación */
 }
 
 /* ==========================================================
@@ -925,55 +854,4 @@ header .logo img {
         width: 100%;
         justify-content: center;
     }
-}
-
-/* ==========================================================
-    11. EFECTOS ESPECIALES GLOBALES
-   ========================================================== */
-
-/* Efecto de partículas al pasar el mouse sobre elementos importantes */
-@keyframes particleEffect {
-    0% {
-        transform: translate(0, 0) scale(1);
-        opacity: 1;
-    }
-    100% {
-        transform: translate(var(--x), var(--y)) scale(0);
-        opacity: 0;
-    }
-}
-
-/* Clase para elementos que necesitan brillo extra */
-.glow-effect {
-    position: relative;
-}
-
-.glow-effect::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(45deg, #f1b317, transparent, #f1b317);
-    border-radius: inherit;
-    z-index: -1;
-    animation: glowPulse 2s infinite;
-}
-
-@keyframes glowPulse {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 0.8; }
-}
-
-/* Efecto de vibración para elementos de alta energía */
-.vibration-effect:hover {
-    animation: vibration 0.3s infinite;
-}
-
-@keyframes vibration {
-    0%, 100% { transform: translate(0, 0); }
-    25% { transform: translate(2px, -2px); }
-    50% { transform: translate(-2px, 2px); }
-    75% { transform: translate(2px, 2px); }
 }

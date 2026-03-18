@@ -16,6 +16,7 @@
                 <a href="/admin/dashboard">Usuarios</a>
                 <a href="/admin/equipo">Equipo</a>
                 <a href="/admin/modelos">Modelos</a>
+                <a href="{{ route('admin.especificaciones.index') }}" class="{{ request()->routeIs('admin.especificaciones.*') ? 'active' : '' }}">Especificaciones</a>
                 <a href="/admin/contacto">Mensajes</a>
                 <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                     {{ __('Salir') }}

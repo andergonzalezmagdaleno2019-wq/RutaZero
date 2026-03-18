@@ -16,6 +16,7 @@
         <nav>
             <a href="{{ route('home') }}">INICIO</a>
             <a href="{{ route('modelos.publico') }}" class="active">MODELOS</a>
+            <a href="{{ route('especificaciones.info') }}" class="{{ request()->is('especificaciones') ? 'active' : '' }}">ESPECIFICACIONES</a>
             <a href="{{ route('contacto.create') }}">CONTACTO</a>
             <a href="{{ route('equipo.publico') }}">EQUIPO</a>
 
@@ -84,7 +85,10 @@
                                     <p>Precio: $${precioFormateado}</p>
                                 </div>
                                 <div class="buttons">
-                                    <button class="btn-interest" onclick="window.location.href='/contacto'">ME INTERESA</button>
+                                <button class="btn-interest" 
+                                        onclick="window.location.href='/modelos/detalle/${moto.id}'">
+                                    VER FICHA TÉCNICA
+                                </button>
                                 </div>
                             </div>
                         </div>

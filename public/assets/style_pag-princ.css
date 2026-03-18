@@ -917,3 +917,91 @@ body.body-equipo {
         padding: 12px 25px;
     }
 }
+
+.btn-rutazero {
+    background: #f1b317; /* Tu amarillo corporativo */
+    color: #000;
+    border: none;
+    padding: 18px 50px;
+    font-size: 1.2rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(241, 179, 23, 0.4);
+    margin-top: 20px;
+}
+
+/* Efecto de brillo que cruza el botón */
+.btn-rutazero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+    transition: 0.5s;
+}
+
+/* Al pasar el mouse */
+.btn-rutazero:hover {
+    transform: translateY(-3px) scale(1.05);
+    background: #fff; /* Cambia a blanco para resaltar */
+    box-shadow: 0 0 25px rgba(241, 179, 23, 0.8);
+    letter-spacing: 5px; /* Se expande un poco, como acelerando */
+}
+
+.btn-rutazero:hover::after {
+    left: 100%;
+}
+
+/* Efecto de click */
+.btn-rutazero:active {
+    transform: translateY(0) scale(0.95);
+}
+
+/* DISEÑO DE BOTÓN UNIFICADO RUAZERO */
+.btn-marca-universal {
+    background: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+    color: #fff;
+    border: 2px solid #f1b317; /* El amarillo corporativo */
+    padding: 15px 35px;
+    font-size: 1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border-radius: 4px;
+    position: relative;
+    box-shadow: 0 0 10px rgba(241, 179, 23, 0.2);
+}
+
+/* Efecto al pasar el mouse (Hover) */
+.btn-marca-universal:hover {
+    background: #f1b317; /* Se llena de amarillo */
+    color: #000; /* Texto negro para contraste perfecto */
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 0 35px rgba(241, 179, 23, 0.9); /* Brillo intenso neón */
+    letter-spacing: 4px;
+}
+
+/* Efecto de "Pulso" sutil para que el usuario sepa que hizo click */
+.btn-marca-universal:active {
+    transform: translateY(0) scale(0.98);
+}
+
+/* Mejora para el contenedor de la carta */
+.carta {
+    border: 1px solid rgba(241, 179, 23, 0.1);
+    transition: 0.5s;
+}
+
+.carta:hover {
+    border-color: #f1b317; /* La carta también se ilumina un poco */
+}

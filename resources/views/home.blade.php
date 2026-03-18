@@ -17,14 +17,15 @@
         <nav>
             <a href="{{ route('home') }}">INICIO</a>
             <a href="{{ route('modelos.publico') }}">MODELOS</a>
+            <a href="{{ route('especificaciones.info') }}" class="{{ request()->is('especificaciones') ? 'active' : '' }}">ESPECIFICACIONES</a>
             <a href="{{ route('contacto.create') }}">CONTACTO</a>
             <a href="{{ route('equipo.publico') }}">EQUIPO</a>
             <div class="user-nav-box">
-    <span class="welcome-text">HOLA, {{ Auth::user()->name }}</span>
-    <a href="{{ route('perfil.editar') }}" class="user-icon-circle">
-        <i class="fa-solid fa-user"></i>
-    </a>
-</div>
+                <span class="welcome-text">HOLA, {{ Auth::user()->name }}</span>
+                <a href="{{ route('perfil.editar') }}" class="user-icon-circle">
+                    <i class="fa-solid fa-user"></i>
+                </a>
+            </div>
             
             @auth
                 <a href="{{ route('logout') }}" 
@@ -42,7 +43,9 @@
     <section id="hero">
         <div class="hero-content">
             <h1>Descubre la adrenalina <br> sobre dos ruedas</h1>
-            <button onclick="document.getElementById('somos-rutazero').scrollIntoView({behavior: 'smooth'})">EMPEZAR</button>
+            <button class="btn-rutazero" onclick="document.getElementById('somos-rutazero').scrollIntoView({behavior: 'smooth'})">
+                EMPEZAR
+            </button>
         </div>
     </section>
 
@@ -70,8 +73,10 @@
                 @foreach($equipos as $integrante)
                     <div class="carta" style="background-image: url('{{ asset($integrante->imagen_url) }}');">
                         <div class="card-overlay">
-                            
-                            <button type="button" onclick="irAMarca('{{ strtolower($integrante->nombre) }}')">
+                            {{-- Un solo tipo de botón para todos --}}
+                            <button type="button" 
+                                    class="btn-marca-universal" 
+                                    onclick="irAMarca('{{ strtolower($integrante->nombre) }}')">
                                 Ver catálogo
                             </button>
                         </div>

@@ -18,6 +18,7 @@
         <nav>
             <a href="{{ route('home') }}">INICIO</a>
             <a href="{{ route('modelos.publico') }}">MODELOS</a> 
+            <a href="{{ route('especificaciones.info') }}" class="{{ request()->is('especificaciones') ? 'active' : '' }}">ESPECIFICACIONES</a>
             <a href="{{ route('contacto.create') }}">CONTACTO</a>
             <a href="{{ route('equipo.publico') }}" class="active">EQUIPO</a>
 
